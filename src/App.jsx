@@ -100,8 +100,8 @@ const Preloader = () => {
     }, []);
 
     return (
-        <div ref={preloaderRef} className="fixed inset-0 z-[9998] bg-accent flex items-center justify-center">
-            <div className="preloader-text font-data text-white font-black text-4xl md:text-6xl tracking-[0.2em] uppercase">
+        <div ref={preloaderRef} className="fixed inset-0 z-[9998] bg-[#FAFAFA] flex items-center justify-center">
+            <div className="preloader-text font-data text-accent font-black text-4xl md:text-6xl tracking-[0.2em] uppercase">
                 Cell Clinic
             </div>
         </div>
