@@ -225,18 +225,18 @@ const Hero = () => {
                 />
             </div>
 
-            <div className="relative z-10 flex flex-col items-start gap-6 max-w-2xl w-full mt-0 md:mt-24 ml-0 md:ml-12 lg:ml-24 xl:ml-32 md:bg-white md:p-8 md:rounded-2xl md:shadow-xl">
+            <div className="relative z-10 flex flex-col items-start gap-6 max-w-2xl w-full mt-0 md:mt-24 ml-0 md:ml-12 lg:ml-24 xl:ml-32 md:bg-white/35 md:backdrop-blur-md md:p-8 md:rounded-2xl md:shadow-lg md:border md:border-white/80">
 
-                <div className="hero-element inline-flex items-center gap-2 font-data text-accent uppercase tracking-wider text-[10px] md:text-sm font-bold border border-accent/40 px-3 md:px-5 py-1 md:py-2 rounded-md bg-white">
+                <div className="hero-element inline-flex items-center gap-2 font-data text-accent uppercase tracking-wider text-[10px] md:text-sm font-bold border border-accent/40 px-3 md:px-5 py-1 md:py-2 rounded-md bg-white md:drop-shadow-lg">
                     <MapPin size={14} className="md:w-4 md:h-4" /> <span>Local Phone Repair in Dodge City</span>
                 </div>
 
-                <h1 className="hero-element font-heading font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-primary leading-[1.05]">
+                <h1 className="hero-element font-heading font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-primary leading-[1.05] md:drop-shadow-lg">
                     Fast device repair <br />
                     <span className="text-accent inline-block mt-1 md:mt-2">when you need it most.</span>
                 </h1>
 
-                <ul className="hero-element space-y-2 md:space-y-3 mt-2 md:mt-4 text-foreground/90 font-heading text-base sm:text-lg md:text-xl font-medium">
+                <ul className="hero-element space-y-2 md:space-y-3 mt-2 md:mt-4 text-foreground/90 font-heading text-base sm:text-lg md:text-xl font-medium md:drop-shadow-md">
                     <li className="flex items-center gap-3"><CheckCircle size={20} className="text-accent flex-shrink-0 md:w-6 md:h-6" /> Surgical precision</li>
                     <li className="flex items-center gap-3"><CheckCircle size={20} className="text-accent flex-shrink-0 md:w-6 md:h-6" /> Fixed in under 60 minutes</li>
                     <li className="flex items-center gap-3"><CheckCircle size={20} className="text-accent flex-shrink-0 md:w-6 md:h-6" /> Premium local parts</li>
@@ -701,7 +701,8 @@ const ContactForm = () => {
                             <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center"><Clock size={20} className="text-accent" /></div>
                             <div>
                                 <div className="font-bold text-lg">Tue-Fri: 9am - 6pm</div>
-                                <div className="text-white/60 text-sm">Sat: 11am - 6pm · Closed Sun & Mon</div>
+                                <div className="font-bold text-lg">Sat: 11am - 6pm</div>
+                                <div className="text-white/60 text-sm">Closed Sun & Mon</div>
                             </div>
                         </div>
                         <div className="flex items-center gap-4 text-white/90">
