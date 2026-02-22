@@ -823,7 +823,6 @@ export default function App() {
     return (
         <div className="bg-background min-h-screen relative font-heading">
             <Preloader />
-            <div className="noise-bg"></div>
             <CustomCursor />
             <Navbar />
             <main>
