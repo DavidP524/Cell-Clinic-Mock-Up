@@ -80,18 +80,13 @@ const Preloader = () => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
 
-            // Fade text in
-            tl.fromTo('.preloader-text',
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.1 }
-            )
-                // Hold for a moment, then slide the curtain up
-                .to(preloaderRef.current, {
-                    yPercent: -100,
-                    duration: 0.8,
-                    ease: 'power4.inOut',
-                    delay: 0.2
-                });
+            // Just slide the curtain up quickly since text is already there
+            tl.to(preloaderRef.current, {
+                yPercent: -100,
+                duration: 0.6,
+                ease: 'power4.inOut',
+                delay: 0.2
+            });
 
         }, preloaderRef);
         return () => ctx.revert();
@@ -185,14 +180,17 @@ const Hero = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from('.hero-element', {
-                y: 30,
-                opacity: 0,
-                stagger: 0.25,
-                duration: 1.5,
-                ease: 'power3.out',
-                delay: 0.8 // Wait for the preloader curtain to start moving
-            });
+            gsap.fromTo('.hero-element',
+                { y: 40, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    stagger: 0.15,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    delay: 0.4 // Synchronized with curtain lift
+                }
+            );
 
             gsap.to(bgImgRef.current, {
                 yPercent: 30,
@@ -379,11 +377,11 @@ const Services = () => {
         const ctx = gsap.context(() => {
             gsap.fromTo('.srv-heading',
                 { y: 30, opacity: 0 },
-                { scrollTrigger: { trigger: sectionRef.current, start: 'top 95%' }, y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+                { scrollTrigger: { trigger: sectionRef.current, start: 'top 95%' }, y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
             );
             gsap.fromTo('.service-card-reveal',
                 { y: 40, opacity: 0, scale: 0.98 },
-                { scrollTrigger: { trigger: gridRef.current, start: 'top 100%' }, y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.8, ease: 'power3.out' }
+                { scrollTrigger: { trigger: gridRef.current, start: 'top 100%' }, y: 0, opacity: 1, scale: 1, stagger: 0.05, duration: 0.6, ease: 'power3.out' }
             );
         }, sectionRef);
         return () => ctx.revert();
@@ -427,7 +425,7 @@ const About = () => {
                 },
                 onUpdate: function () {
                     const el = document.getElementById('repairs-ticker');
-                    if (el) el.innerText = Math.round(this.targets()[0].val).toLocaleString();
+                    if (el) el.innerText = Math.min(1000, Math.ceil(this.targets()[0].val)).toLocaleString();
                 }
             });
         }, sectionRef);
