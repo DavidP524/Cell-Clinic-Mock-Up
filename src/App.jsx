@@ -243,7 +243,7 @@ const Hero = () => {
                 </ul>
 
                 <div className="hero-element flex flex-col sm:flex-row gap-3 md:gap-4 mt-4 md:mt-6 w-full sm:w-auto">
-                    <a href="tel:5551234567" className="magnetic-btn inline-flex bg-accent text-white px-6 md:px-10 py-3 md:py-5 rounded-md font-bold text-base md:text-lg items-center justify-center gap-2 md:gap-3 shadow-[0_0_30px_rgba(230,59,46,0.2)] hover:bg-red-700 transition-colors w-full sm:w-auto">
+                    <a href="tel:6202534986" className="magnetic-btn inline-flex bg-accent text-white px-6 md:px-10 py-3 md:py-5 rounded-md font-bold text-base md:text-lg items-center justify-center gap-2 md:gap-3 shadow-[0_0_30px_rgba(230,59,46,0.2)] hover:bg-red-700 transition-colors w-full sm:w-auto">
                         <Phone size={18} className="relative z-10 md:w-5 md:h-5" />
                         <span className="relative z-10">Call Now</span>
                     </a>
@@ -681,10 +681,10 @@ const ContactForm = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                        <a href="tel:5551234567" className="magnetic-btn bg-white text-primary px-6 py-3 rounded-md font-bold text-center flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors">
+                        <a href="tel:6202534986" className="magnetic-btn bg-white text-primary px-6 py-3 rounded-md font-bold text-center flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors">
                             <Phone size={18} /> Call Us Now
                         </a>
-                        <a href="sms:5551234567" className="magnetic-btn bg-white/10 text-white border border-white/20 px-6 py-3 rounded-md font-bold text-center flex items-center justify-center gap-2 hover:bg-white/20 transition-colors">
+                        <a href="sms:6202534986" className="magnetic-btn bg-white/10 text-white border border-white/20 px-6 py-3 rounded-md font-bold text-center flex items-center justify-center gap-2 hover:bg-white/20 transition-colors">
                             <MessageSquare size={18} /> Text Us
                         </a>
                     </div>
