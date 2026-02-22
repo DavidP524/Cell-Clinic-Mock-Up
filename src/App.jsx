@@ -83,14 +83,14 @@ const Preloader = () => {
             // Fade text in
             tl.fromTo('.preloader-text',
                 { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 }
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.1 }
             )
                 // Hold for a moment, then slide the curtain up
                 .to(preloaderRef.current, {
                     yPercent: -100,
-                    duration: 1.2,
+                    duration: 0.8,
                     ease: 'power4.inOut',
-                    delay: 0.5
+                    delay: 0.2
                 });
 
         }, preloaderRef);
@@ -191,7 +191,7 @@ const Hero = () => {
                 stagger: 0.25,
                 duration: 1.5,
                 ease: 'power3.out',
-                delay: 0.2
+                delay: 0.8 // Wait for the preloader curtain to start moving
             });
 
             gsap.to(bgImgRef.current, {
@@ -420,14 +420,14 @@ const About = () => {
             gsap.to({ val: 0 }, {
                 val: 1000,
                 duration: 2.5,
-                ease: 'power2.out',
+                ease: 'none', // linear speed
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top 80%',
                 },
                 onUpdate: function () {
                     const el = document.getElementById('repairs-ticker');
-                    if (el) el.innerText = Math.floor(this.targets()[0].val).toLocaleString();
+                    if (el) el.innerText = Math.round(this.targets()[0].val).toLocaleString();
                 }
             });
         }, sectionRef);
