@@ -93,10 +93,6 @@ const Preloader = () => {
                 yPercent: -100,
                 duration: 1,
                 ease: 'power3.inOut',
-                onStart: () => {
-                    const meta = document.querySelector('meta[name="theme-color"]');
-                    if (meta) meta.setAttribute('content', '#FAFAFA');
-                },
             }, '-=0.1');
 
         }, preloaderRef);
@@ -104,9 +100,11 @@ const Preloader = () => {
     }, []);
 
     return (
-        <div ref={preloaderRef} className="fixed inset-0 z-[9998] bg-accent flex items-center justify-center">
-            <div className="preloader-text font-data text-white font-black text-4xl md:text-6xl tracking-[0.2em] uppercase">
-                Cell Clinic
+        <div ref={preloaderRef} className="fixed inset-0 z-[9998] bg-[#FAFAFA] flex flex-col">
+            <div className="flex-1 bg-accent flex items-center justify-center">
+                <div className="preloader-text font-data text-white font-black text-4xl md:text-6xl tracking-[0.2em] uppercase">
+                    Cell Clinic
+                </div>
             </div>
         </div>
     );
