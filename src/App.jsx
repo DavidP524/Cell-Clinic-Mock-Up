@@ -72,6 +72,40 @@ const SectionHeading = ({ children, subtitle, centered = false }) => (
 
 // --- SECTIONS ---
 
+// 0. PRELOADER
+const Preloader = () => {
+    const preloaderRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline();
+
+            // Fade text in
+            tl.fromTo('.preloader-text',
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 }
+            )
+                // Hold for a moment, then slide the curtain up
+                .to(preloaderRef.current, {
+                    yPercent: -100,
+                    duration: 1.2,
+                    ease: 'power4.inOut',
+                    delay: 0.5
+                });
+
+        }, preloaderRef);
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <div ref={preloaderRef} className="fixed inset-0 z-[9998] bg-accent flex items-center justify-center">
+            <div className="preloader-text font-data text-white font-black text-4xl md:text-6xl tracking-[0.2em] uppercase">
+                Cell Clinic
+            </div>
+        </div>
+    );
+};
+
 // 0. NAVBAR
 const Navbar = () => {
     const navRef = useRef(null);
@@ -182,35 +216,53 @@ const Hero = () => {
                     ref={bgImgRef}
                     src="/Hero.CellClinic.jpeg"
                     alt="Cell Clinic Devices"
-                    className="absolute -top-[5%] left-0 w-full h-[110%] object-cover object-center"
+                    className="absolute -top-[5%] left-0 w-full h-[110%] object-cover object-center hidden md:block" // Hidden on mobile, shown on md+
                 />
             </div>
 
-            <div className="relative z-10 flex flex-col items-start gap-6 max-w-2xl w-full mt-16 md:mt-24 ml-0 md:ml-12 lg:ml-24 xl:ml-32 bg-white p-8 rounded-2xl shadow-xl">
-                <div className="hero-element inline-flex items-center gap-2 font-data text-accent uppercase tracking-wider text-xs md:text-sm font-bold border border-accent/40 px-5 py-2 rounded-md bg-white">
-                    <MapPin size={16} /> <span>Local Phone Repair in Dodge City</span>
+            {/* Mobile Image (Visible only on small screens) */}
+            <div className="w-full h-64 md:hidden relative rounded-2xl overflow-hidden mb-8 shadow-lg mt-8 hidden">
+                {/*  Keeping this structure in case we want a split layout, but let's try the padding approach first */}
+            </div>
+
+            <div className="relative z-10 flex flex-col items-start gap-6 max-w-2xl w-full mt-8 md:mt-24 ml-0 md:ml-12 lg:ml-24 xl:ml-32 md:bg-white md:p-8 md:rounded-2xl md:shadow-xl">
+                {/*  Mobile specific background block so it doesn't just sit on the white */}
+                <div className="absolute inset-0 bg-white/90 backdrop-blur-sm -m-6 p-6 md:hidden rounded-2xl z-[-1]"></div>
+
+                <div className="hero-element inline-flex items-center gap-2 font-data text-accent uppercase tracking-wider text-[10px] md:text-sm font-bold border border-accent/40 px-3 md:px-5 py-1 md:py-2 rounded-md bg-white">
+                    <MapPin size={14} className="md:w-4 md:h-4" /> <span>Local Phone Repair in Dodge City</span>
                 </div>
 
-                <h1 className="hero-element font-heading font-black text-4xl md:text-6xl lg:text-7xl tracking-tight text-primary leading-[1.05]">
+                <h1 className="hero-element font-heading font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-primary leading-[1.05]">
                     Fast device repair <br />
-                    <span className="text-accent inline-block mt-2">when you need it most.</span>
+                    <span className="text-accent inline-block mt-1 md:mt-2">when you need it most.</span>
                 </h1>
 
-                <ul className="hero-element space-y-3 mt-4 text-foreground/90 font-heading text-lg md:text-xl font-medium">
-                    <li className="flex items-center gap-3"><CheckCircle size={24} className="text-accent flex-shrink-0" /> Surgical precision</li>
-                    <li className="flex items-center gap-3"><CheckCircle size={24} className="text-accent flex-shrink-0" /> Fixed in under 60 minutes</li>
-                    <li className="flex items-center gap-3"><CheckCircle size={24} className="text-accent flex-shrink-0" /> Premium local parts</li>
+                <ul className="hero-element space-y-2 md:space-y-3 mt-2 md:mt-4 text-foreground/90 font-heading text-base sm:text-lg md:text-xl font-medium">
+                    <li className="flex items-center gap-3"><CheckCircle size={20} className="text-accent flex-shrink-0 md:w-6 md:h-6" /> Surgical precision</li>
+                    <li className="flex items-center gap-3"><CheckCircle size={20} className="text-accent flex-shrink-0 md:w-6 md:h-6" /> Fixed in under 60 minutes</li>
+                    <li className="flex items-center gap-3"><CheckCircle size={20} className="text-accent flex-shrink-0 md:w-6 md:h-6" /> Premium local parts</li>
                 </ul>
 
-                <div className="hero-element flex flex-col sm:flex-row gap-4 mt-6 w-full sm:w-auto">
-                    <a href="tel:5551234567" className="magnetic-btn inline-flex bg-accent text-white px-8 md:px-10 py-4 md:py-5 rounded-md font-bold text-lg items-center justify-center gap-3 shadow-[0_0_30px_rgba(230,59,46,0.2)] hover:bg-red-700 transition-colors w-full sm:w-auto">
-                        <Phone size={20} className="relative z-10" />
+                <div className="hero-element flex flex-col sm:flex-row gap-3 md:gap-4 mt-4 md:mt-6 w-full sm:w-auto">
+                    <a href="tel:5551234567" className="magnetic-btn inline-flex bg-accent text-white px-6 md:px-10 py-3 md:py-5 rounded-md font-bold text-base md:text-lg items-center justify-center gap-2 md:gap-3 shadow-[0_0_30px_rgba(230,59,46,0.2)] hover:bg-red-700 transition-colors w-full sm:w-auto">
+                        <Phone size={18} className="relative z-10 md:w-5 md:h-5" />
                         <span className="relative z-10">Call Now</span>
                     </a>
-                    <button onClick={() => { document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="magnetic-btn inline-flex bg-white/80 backdrop-blur-sm text-primary px-8 md:px-10 py-4 md:py-5 rounded-md font-bold text-lg items-center justify-center gap-3 border border-gray-300 hover:bg-gray-100 transition-colors w-full sm:w-auto shadow-sm">
+                    <button onClick={() => { document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="magnetic-btn inline-flex bg-white/80 backdrop-blur-sm text-primary px-6 md:px-10 py-3 md:py-5 rounded-md font-bold text-base md:text-lg items-center justify-center gap-2 md:gap-3 border border-gray-300 hover:bg-gray-100 transition-colors w-full sm:w-auto shadow-sm">
                         <span className="relative z-10">Get a Fast Quote</span>
                     </button>
                 </div>
+            </div>
+
+            {/* Split layout mobile image implementation */}
+            <div className="absolute inset-0 z-0 overflow-hidden bg-white md:hidden">
+                <img
+                    src="/Hero.CellClinic.jpeg"
+                    alt="Cell Clinic Devices"
+                    className="absolute bottom-0 left-0 w-full h-[50%] object-cover object-top opacity-80"
+                />
+                <div className="absolute bottom-0 left-0 w-full h-[50%] bg-gradient-to-t from-white via-white/40 to-transparent"></div>
             </div>
         </section>
     );
@@ -244,7 +296,7 @@ const TrustBadges = () => {
 
 // Brand Ticker Marquee (Updated to light theme)
 const BrandMarquee = () => {
-    const brands = ["APPLE", "SAMSUNG", "GOOGLE", "LG", "MOTOROLA", "ONEPLUS", "NINTENDO", "SONY", "MICROSOFT"];
+    const brands = ["APPLE", "SAMSUNG", "GOOGLE", "LG", "MOTOROLA", "ONEPLUS", "NINTENDO", "PLAYSTATION", "SONY", "MICROSOFT"];
     return (
         <section className="bg-white text-primary border-b border-gray-200 py-6 overflow-hidden border-t">
             <div className="marquee font-heading tracking-widest text-sm font-bold opacity-80">
@@ -765,6 +817,7 @@ export default function App() {
 
     return (
         <div className="bg-background min-h-screen relative font-heading">
+            <Preloader />
             <div className="noise-bg"></div>
             <CustomCursor />
             <Navbar />
