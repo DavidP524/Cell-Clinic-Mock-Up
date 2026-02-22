@@ -215,7 +215,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-[100dvh] flex items-center justify-start pt-32 pb-24 px-6 md:px-12 bg-white overflow-hidden text-left border-b border-gray-200">
+        <section ref={containerRef} className="relative w-full min-h-[100dvh] flex items-center justify-start pt-24 md:pt-32 pb-24 px-6 md:px-12 bg-white overflow-hidden text-left border-b border-gray-200">
             <div className="absolute inset-0 z-0 overflow-hidden bg-white">
                 <img
                     ref={bgImgRef}
@@ -225,14 +225,7 @@ const Hero = () => {
                 />
             </div>
 
-            {/* Mobile Image (Visible only on small screens) */}
-            <div className="w-full h-64 md:hidden relative rounded-2xl overflow-hidden mb-8 shadow-lg mt-8 hidden">
-                {/*  Keeping this structure in case we want a split layout, but let's try the padding approach first */}
-            </div>
-
-            <div className="relative z-10 flex flex-col items-start gap-6 max-w-2xl w-full mt-8 md:mt-24 ml-0 md:ml-12 lg:ml-24 xl:ml-32 md:bg-white md:p-8 md:rounded-2xl md:shadow-xl">
-                {/*  Mobile specific background block so it doesn't just sit on the white */}
-                <div className="absolute inset-0 bg-white/90 backdrop-blur-sm -m-6 p-6 md:hidden rounded-2xl z-[-1]"></div>
+            <div className="relative z-10 flex flex-col items-start gap-6 max-w-2xl w-full mt-0 md:mt-24 ml-0 md:ml-12 lg:ml-24 xl:ml-32 md:bg-white md:p-8 md:rounded-2xl md:shadow-xl">
 
                 <div className="hero-element inline-flex items-center gap-2 font-data text-accent uppercase tracking-wider text-[10px] md:text-sm font-bold border border-accent/40 px-3 md:px-5 py-1 md:py-2 rounded-md bg-white">
                     <MapPin size={14} className="md:w-4 md:h-4" /> <span>Local Phone Repair in Dodge City</span>
@@ -260,15 +253,6 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Split layout mobile image implementation */}
-            <div className="absolute inset-0 z-0 overflow-hidden bg-white md:hidden">
-                <img
-                    src="/Hero.CellClinic.jpeg"
-                    alt="Cell Clinic Devices"
-                    className="absolute bottom-0 left-0 w-full h-[50%] object-cover object-top opacity-80"
-                />
-                <div className="absolute bottom-0 left-0 w-full h-[50%] bg-gradient-to-t from-white via-white/40 to-transparent"></div>
-            </div>
         </section>
     );
 };
