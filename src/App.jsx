@@ -693,15 +693,15 @@ const ContactForm = () => {
                         <div className="flex items-center gap-4 text-white/90">
                             <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center"><MapPin size={20} className="text-accent" /></div>
                             <div>
-                                <div className="font-bold text-lg">123 Main St, Dodge City, KS</div>
-                                <div className="text-white/60 text-sm">Walk-ins always welcome</div>
+                                <div className="font-bold text-lg">2500 Central Ave. Suite G</div>
+                                <div className="text-white/60 text-sm">Dodge City, Kansas 67801</div>
                             </div>
                         </div>
                         <div className="flex items-center gap-4 text-white/90">
                             <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center"><Clock size={20} className="text-accent" /></div>
                             <div>
-                                <div className="font-bold text-lg">Mon-Sat: 9am - 6pm</div>
-                                <div className="text-white/60 text-sm">Closed Sundays</div>
+                                <div className="font-bold text-lg">Tue-Fri: 9am - 6pm</div>
+                                <div className="text-white/60 text-sm">Sat: 11am - 6pm · Closed Sun & Mon</div>
                             </div>
                         </div>
                         <div className="flex items-center gap-4 text-white/90">
