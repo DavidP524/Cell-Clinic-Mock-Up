@@ -78,15 +78,22 @@ const Preloader = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline();
+            const tl = gsap.timeline({ delay: 0.4 });
 
-            // Just slide the curtain up quickly since text is already there
+            // Fade the text out first
+            tl.to('.preloader-text', {
+                opacity: 0,
+                y: -20,
+                duration: 0.4,
+                ease: 'power2.in',
+            });
+
+            // Then roll the curtain up smoothly
             tl.to(preloaderRef.current, {
                 yPercent: -100,
-                duration: 0.6,
-                ease: 'power4.inOut',
-                delay: 0.2
-            });
+                duration: 1,
+                ease: 'power3.inOut',
+            }, '-=0.1');
 
         }, preloaderRef);
         return () => ctx.revert();
@@ -135,7 +142,7 @@ const Navbar = () => {
         [&.nav-scrolled]:bg-white/95 [&.nav-scrolled]:backdrop-blur-md [&.nav-scrolled]:shadow-md [&.nav-scrolled]:text-foreground [&.nav-scrolled]:py-3"
             >
                 <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
-                    <img src="/Cell Clinic Logo.png" alt="Cell Clinic Logo" className="w-10 h-10 object-contain" />
+                    <img src="/Logo.png" alt="Cell Clinic Logo" className="w-10 h-10 object-contain" />
                     <div className="font-heading font-black text-2xl tracking-tight">Cell Clinic</div>
                 </div>
                 <div className="hidden md:flex items-center space-x-10 font-bold tracking-wide">
@@ -188,7 +195,7 @@ const Hero = () => {
                     stagger: 0.15,
                     duration: 1.2,
                     ease: 'power3.out',
-                    delay: 0.4 // Synchronized with curtain lift
+                    delay: 1.1 // Synchronized with curtain lift
                 }
             );
 
