@@ -93,6 +93,10 @@ const Preloader = () => {
                 yPercent: -100,
                 duration: 1,
                 ease: 'power3.inOut',
+                onStart: () => {
+                    const meta = document.querySelector('meta[name="theme-color"]');
+                    if (meta) meta.setAttribute('content', '#FAFAFA');
+                },
             }, '-=0.1');
 
         }, preloaderRef);
