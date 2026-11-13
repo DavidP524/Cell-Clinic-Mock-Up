@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cell-clinic-mock-up.vercel.app/sitemap.xml
