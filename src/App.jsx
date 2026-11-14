@@ -51,7 +51,7 @@ function Navbar() {
     document.addEventListener('keydown', close);
     return () => document.removeEventListener('keydown', close);
   }, [open]);
-  return <header className={`site-header ${location.pathname === '/' ? 'home-nav' : ''} ${overHero ? 'over-hero' : ''}`}><div className="container nav-inner"><Brand /><button ref={toggleRef} className="menu-toggle" aria-expanded={open} aria-controls="navigation" aria-label={open ? 'Close navigation' : 'Open navigation'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button><nav id="navigation" className={open ? 'navigation is-open' : 'navigation'} aria-label="Main navigation"><NavLink to="/services">Services</NavLink><NavLink to="/about">About</NavLink><Link to="/#faq" onClick={() => setOpen(false)}>FAQ</Link><NavLink to="/contact">Contact</NavLink><Actions compact /></nav></div></header>;
+  return <header className={`site-header ${overHero ? 'over-hero' : ''}`}><div className="container nav-inner"><Brand /><button ref={toggleRef} className="menu-toggle" aria-expanded={open} aria-controls="navigation" aria-label={open ? 'Close navigation' : 'Open navigation'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button><nav id="navigation" className={open ? 'navigation is-open' : 'navigation'} aria-label="Main navigation"><NavLink to="/services">Services</NavLink><NavLink to="/about">About</NavLink><Link to="/#faq" onClick={() => setOpen(false)}>FAQ</Link><NavLink to="/contact">Contact</NavLink><Actions compact /></nav></div></header>;
 }
 function Hours({ live = false }) {
   const now = useShopClock();
