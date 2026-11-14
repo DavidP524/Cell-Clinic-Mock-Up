@@ -1,6 +1,6 @@
 export const phone = '620-253-4986';
 export const address = '2500 Central Ave. Suite G, Dodge City, Kansas 67801';
-export const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+export const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Cell Clinic, ${address}`)}`;
 export const warranty = "We provide a solid 1-year warranty on our parts and labor. If the replacement part malfunctions (excluding physical damage like a new crack), we'll fix it for free.";
 export const services = [
   { title: 'Screen Repairs', price: '$89', icon: 'screen', desc: 'We repair cracked screens, display lines, and touch problems at our Dodge City shop.', detail: 'Tell us your device model and what happened to the screen. We’ll discuss the replacement options, price, and timing before you bring it in.' },
